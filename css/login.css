@@ -1,0 +1,452 @@
+/* HNX — خلفية بيضاء مريحة + ألوان الشعار */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+:root{
+  --navy:#00204a;
+  --blue:#0056b3;
+  --bright:#0080ff;
+  --glow:#4da3ff;
+  --cyan:#00b8e6;
+  --bg:#f4f8fc;
+  --bg-soft:#eef4fa;
+  --white:#fff;
+  --text:#1e3a5f;
+  --muted:#6b8ba8;
+  --glass:rgba(255,255,255,.88);
+  --glass-border:rgba(0,86,179,.1);
+  --input-bg:#f0f4f8;
+  --shadow:0 4px 20px rgba(0,50,120,.08);
+  --shadow-sm:0 2px 12px rgba(0,40,100,.06);
+  --radius:14px;
+  --green:#16a34a
+}
+
+body.hnx-login{
+  min-height:100vh;
+  min-height:100dvh;
+  font-family:"Segoe UI",Tahoma,"Noto Sans Arabic",sans-serif;
+  font-size:15px;
+  color:var(--text);
+  background:var(--bg);
+  background:linear-gradient(180deg,#eef5fc 0%,#f8fafc 35%,#fff 100%);
+  padding-bottom:76px;
+  overflow-x:hidden;
+  position:relative
+}
+
+/* بقع ضوء خفيفة جداً */
+.hnx-login .bg-effects{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0
+}
+.hnx-login .orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(70px);
+  animation:hnx-float 16s ease-in-out infinite
+}
+.hnx-login .orb-1{
+  width:240px;height:240px;
+  background:#b8dcff;
+  top:-80px;right:-60px;
+  opacity:.35
+}
+.hnx-login .orb-2{
+  width:200px;height:200px;
+  background:#c5eeff;
+  bottom:25%;left:-70px;
+  opacity:.28;
+  animation-delay:-6s
+}
+.hnx-login .orb-3{
+  width:160px;height:160px;
+  background:#d4e8ff;
+  bottom:-50px;right:15%;
+  opacity:.22;
+  animation-delay:-10s
+}
+@keyframes hnx-float{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(10px,-14px) scale(1.04)}
+}
+
+.hnx-login .watermark{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:clamp(26px,7vw,40px);
+  font-weight:800;
+  color:var(--navy);
+  opacity:.04;
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:0;
+  letter-spacing:.04em
+}
+
+.hnx-login .page{
+  position:relative;
+  z-index:1;
+  max-width:420px;
+  margin:0 auto;
+  padding:0 18px 16px
+}
+
+/* شريط علوي */
+.hnx-login .top-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:12px 16px;
+  color:#fff;
+  background:linear-gradient(90deg,var(--navy) 0%,var(--blue) 50%,var(--bright) 100%);
+  box-shadow:0 3px 16px rgba(0,60,140,.2);
+  position:relative;
+  z-index:2
+}
+.hnx-login .status-pill{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  font-weight:700
+}
+.hnx-login .status-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#4ade80;
+  box-shadow:0 0 8px rgba(74,222,128,.7);
+  animation:hnx-pulse 2s ease-in-out infinite
+}
+@keyframes hnx-pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.8;transform:scale(1.12)}
+}
+.hnx-login .top-msg{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:10px;
+  line-height:1.35;
+  opacity:.95;
+  max-width:58%;
+  text-align:left;
+  direction:ltr
+}
+.hnx-login .top-msg svg{flex-shrink:0;width:15px;height:15px}
+
+/* شعار */
+.hnx-login .logo-wrap{
+  padding:24px 12px 14px;
+  text-align:center
+}
+.hnx-login .logo{
+  max-width:min(100%,300px);
+  height:auto;
+  display:inline-block;
+  filter:drop-shadow(0 6px 20px rgba(0,86,179,.15));
+  animation:hnx-logo-glow 5s ease-in-out infinite
+}
+@keyframes hnx-logo-glow{
+  0%,100%{filter:drop-shadow(0 4px 16px rgba(0,86,179,.12))}
+  50%{filter:drop-shadow(0 8px 28px rgba(0,128,255,.22))}
+}
+
+/* بطاقات زجاجية فاتحة */
+.hnx-login .glass{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px)
+}
+@supports not (backdrop-filter:blur(1px)){
+  .hnx-login .glass{background:var(--white)}
+}
+
+/* أخبار */
+.hnx-login .ticker{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 14px;
+  margin-bottom:16px;
+  overflow:hidden
+}
+.hnx-login .ticker-badge{
+  flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--bright));
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:5px 12px;
+  border-radius:20px;
+  box-shadow:0 2px 10px rgba(0,100,200,.25)
+}
+.hnx-login .ticker-track{overflow:hidden;flex:1;min-width:0}
+.hnx-login .ticker-text{
+  display:inline-block;
+  white-space:nowrap;
+  font-size:12px;
+  color:var(--muted);
+  animation:hnx-scroll 22s linear infinite
+}
+@keyframes hnx-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* نموذج */
+.hnx-login .login-form{margin-bottom:8px}
+.hnx-login .login-panel{
+  padding:18px 16px 20px;
+  margin-bottom:4px
+}
+.hnx-login .alert-msg{
+  font-size:13px;
+  margin-bottom:14px;
+  padding:11px 14px;
+  border-radius:var(--radius);
+  background:#fff5f6;
+  border:1px solid #fecdd3;
+  color:#be123c;
+  text-align:center;
+  line-height:1.5
+}
+.hnx-login .alert-msg a,.hnx-login .hint-msg a{
+  color:var(--blue);
+  font-weight:600;
+  text-decoration:none
+}
+.hnx-login .hint-msg{
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+  margin-bottom:14px;
+  line-height:1.5
+}
+
+.hnx-login .field{position:relative;margin-bottom:12px}
+.hnx-login .field-ico{
+  position:absolute;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+  width:20px;height:20px;
+  fill:var(--blue);
+  pointer-events:none
+}
+.hnx-login .field input{
+  width:100%;
+  height:50px;
+  padding:0 48px 0 16px;
+  border:1px solid #dce8f4;
+  border-radius:var(--radius);
+  background:var(--white);
+  color:var(--text);
+  font-size:15px;
+  font-family:inherit;
+  outline:0;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .2s,box-shadow .2s,transform .15s;
+  -webkit-appearance:none
+}
+.hnx-login .field input::placeholder{color:#9ab0c4}
+.hnx-login .field input:focus{
+  border-color:var(--bright);
+  box-shadow:0 0 0 3px rgba(0,128,255,.15),var(--shadow-sm);
+  transform:translateY(-1px)
+}
+
+.hnx-login .remember{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:14px 0 18px;
+  font-size:13px;
+  color:var(--muted);
+  cursor:pointer
+}
+.hnx-login .remember input{
+  width:17px;height:17px;
+  accent-color:var(--blue);
+  cursor:pointer
+}
+
+.hnx-login .btn-login{
+  width:100%;
+  height:52px;
+  border:0;
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--bright) 0%,var(--navy) 55%,var(--blue) 100%);
+  background-size:200% 200%;
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  font-family:inherit;
+  cursor:pointer;
+  box-shadow:0 6px 22px rgba(0,86,179,.3),inset 0 1px 0 rgba(255,255,255,.2);
+  transition:transform .12s,box-shadow .2s;
+  animation:hnx-btn-shift 6s ease infinite;
+  -webkit-appearance:none;
+  position:relative;
+  overflow:hidden
+}
+.hnx-login .btn-login::after{
+  content:"";
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  animation:hnx-shine 4s ease-in-out infinite
+}
+@keyframes hnx-btn-shift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes hnx-shine{
+  0%{left:-100%}
+  40%,100%{left:150%}
+}
+.hnx-login .btn-login:active{transform:scale(.98)}
+.hnx-login .btn-login:hover,.hnx-login .btn-login:focus{
+  box-shadow:0 8px 28px rgba(0,100,200,.38)
+}
+
+.hnx-login .footer-brand{
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  padding:14px 0 8px;
+  color:#94b0cc
+}
+
+/* شريط سفلي */
+.hnx-login .bottom-nav{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-around;
+  align-items:flex-end;
+  padding:6px 8px max(6px,env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.95);
+  border-top:1px solid #e8eff6;
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  box-shadow:0 -4px 24px rgba(0,40,100,.06)
+}
+.hnx-login .nav-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  text-decoration:none;
+  color:#9ab0c4;
+  font-size:11px;
+  padding:4px 14px 2px;
+  min-width:72px;
+  transition:color .2s
+}
+.hnx-login .nav-item svg{width:24px;height:24px;fill:currentColor}
+.hnx-login .nav-ico-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  transition:background .2s,box-shadow .2s
+}
+.hnx-login .nav-item.active{
+  color:var(--blue);
+  font-weight:700
+}
+.hnx-login .nav-item.active .nav-ico-wrap{
+  background:linear-gradient(135deg,var(--blue),var(--bright));
+  color:#fff;
+  padding:7px 14px;
+  border-radius:12px;
+  box-shadow:0 4px 14px rgba(0,100,200,.3)
+}
+.hnx-login .nav-item:not(.active) svg{margin-bottom:2px}
+
+/* أسعار وموزعين */
+.hnx-login .page-title{
+  text-align:center;
+  font-size:18px;
+  font-weight:700;
+  color:var(--navy);
+  padding:8px 0 4px
+}
+.hnx-login .page-title::after{
+  content:"";
+  display:block;
+  width:50px;height:3px;
+  margin:10px auto 18px;
+  border-radius:2px;
+  background:linear-gradient(90deg,var(--navy),var(--glow))
+}
+.hnx-login .pkg-item,
+.hnx-login .agent-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:15px 16px;
+  margin-bottom:10px
+}
+.hnx-login .pkg-item.featured{
+  border-color:rgba(0,128,255,.35);
+  box-shadow:0 0 0 1px rgba(0,128,255,.15),var(--shadow)
+}
+.hnx-login .pkg-name,.hnx-login .agent-name{
+  font-weight:700;
+  font-size:15px;
+  color:var(--navy)
+}
+.hnx-login .pkg-desc,.hnx-login .agent-loc{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:4px;
+  line-height:1.4
+}
+.hnx-login .pkg-ico,.hnx-login .agent-ico{
+  width:46px;height:46px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#e8f4ff,#dceeff);
+  border:1px solid #cce0f5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0
+}
+.hnx-login .pkg-ico svg,.hnx-login .agent-ico svg{
+  width:22px;height:22px;
+  fill:var(--blue)
+}
+.hnx-login .badge-save{
+  display:inline-block;
+  font-size:10px;
+  background:linear-gradient(90deg,var(--blue),var(--bright));
+  color:#fff;
+  padding:3px 10px;
+  border-radius:8px;
+  margin-top:6px;
+  font-weight:600
+}
+
+@media (min-width:480px){
+  .hnx-login .top-bar{border-radius:0 0 14px 14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hnx-login .orb,.hnx-login .logo,.hnx-login .status-dot,
+  .hnx-login .btn-login,.hnx-login .btn-login::after,
+  .hnx-login .ticker-text{animation:none}
+  .hnx-login .btn-login{background:linear-gradient(135deg,var(--bright),var(--navy))}
+}
